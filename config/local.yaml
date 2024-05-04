@@ -1,0 +1,15 @@
+env: "local"
+storage_path: "./storage/storage.db"
+http_server:
+  address: "127.0.0.1:8080"
+  timeout: 100s
+  idle_timeout: 600s
+db:
+  host: "database"
+  port: "5432"
+  username: "postgres"
+  password: "qwerty"
+  dbname: "postgres"
+  sslmode: "disable"
+  timeout: 600s
+  driver: "postgres"

@@ -1,0 +1,190 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "Documentation of user management APIs.\n\nSchemes:\nhttp\nhttps",
+    "version": "1.0.0"
+  },
+  "basePath": "/",
+  "paths": {
+    "/api/users": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get a list of all users.",
+        "operationId": "listUsersRequest",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/listUsersResponse"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Create a new user.",
+        "operationId": "createUserRequest",
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/responses/createUserResponse"
+          }
+        }
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get a user by ID.",
+        "operationId": "getUserRequest",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "x-go-name": "ID",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/getUserResponse"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Update a user by ID.",
+        "operationId": "updateUserRequest",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "x-go-name": "ID",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/updateUserResponse"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Delete a user by ID.",
+        "operationId": "deleteUserRequest",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int64",
+            "x-go-name": "ID",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/deleteUserResponse"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "delition": {
+          "type": "boolean",
+          "x-go-name": "Deleted"
+        },
+        "email": {
+          "type": "string",
+          "x-go-name": "Email"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "password": {
+          "type": "string",
+          "x-go-name": "Password"
+        },
+        "time_delited": {
+          "type": "string",
+          "x-go-name": "TimeDeleted"
+        },
+        "username": {
+          "type": "string",
+          "x-go-name": "Username"
+        }
+      },
+      "x-go-package": "Fragaed"
+    }
+  },
+  "responses": {
+    "createUserResponse": {
+      "description": "",
+      "schema": {
+        "$ref": "#/definitions/User"
+      }
+    },
+    "deleteUserResponse": {
+      "description": ""
+    },
+    "getUserResponse": {
+      "description": "",
+      "schema": {
+        "$ref": "#/definitions/User"
+      }
+    },
+    "listUsersResponse": {
+      "description": "",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/User"
+        }
+      }
+    },
+    "updateUserResponse": {
+      "description": "",
+      "schema": {
+        "$ref": "#/definitions/User"
+      }
+    }
+  }
+}
